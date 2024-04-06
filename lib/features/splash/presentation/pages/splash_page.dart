@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_safety/common/domain/router/pages.dart';
 import 'package:food_safety/common/presentation/image_assets.dart';
+import 'package:food_safety/main/app_environment.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SplashPage extends ConsumerWidget {
@@ -11,9 +12,15 @@ class SplashPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Center(
-        child: Image.asset(
-          ImageAssets.logo,
-          width: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              ImageAssets.logo,
+              width: 100,
+            ),
+            Text(EnvInfo.envName),
+          ],
         ),
       ),
     );

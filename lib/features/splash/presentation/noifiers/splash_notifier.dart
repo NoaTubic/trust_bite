@@ -1,3 +1,4 @@
+import 'package:food_safety/features/home/presentation/pages/home_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final splashNotifierProvider = StateNotifierProvider<SplashNotifier, String?>(
@@ -9,6 +10,6 @@ class SplashNotifier extends StateNotifier<String?> {
 
   Future<void> getInitialRoute() async {
     await Future.delayed(const Duration(seconds: 2));
-    state = '';
+    state = HomePage.routeName;
   }
 }

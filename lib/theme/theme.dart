@@ -39,7 +39,7 @@ ThemeData _getTheme({required AppColors appColors}) {
     ),
     extensions: [
       appColors,
-      getAppTextStyles(defaultColor: appColors.primary!),
+      getAppTextStyles(defaultColor: appColors.foreground!),
     ],
   );
 }

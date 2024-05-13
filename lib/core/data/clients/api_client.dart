@@ -2,10 +2,11 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_loggy_dio/flutter_loggy_dio.dart';
+import 'package:food_safety/main/app_environment.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:retrofit/retrofit.dart';
 
-import '../../main/app_environment.dart';
-import 'api_client.dart';
+part 'api_client.g.dart';
 
 final apiClientProvider = Provider<ApiClient>(
   (ref) => ApiClient(
@@ -24,3 +25,8 @@ final dioProvider = Provider.family<Dio, String>(
       ],
     ),
 );
+
+@RestApi()
+abstract class ApiClient {
+  factory ApiClient(Dio dio) = _ApiClient;
+}

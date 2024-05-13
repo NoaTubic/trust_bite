@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_safety/common/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
 
 class CustomScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:food_safety/common/presentation/app_sizes.dart';
-import 'package:food_safety/common/presentation/build_context_extensions.dart';
-import 'package:food_safety/common/presentation/widgets/base_tile.dart';
-import 'package:food_safety/common/presentation/widgets/custom_scaffold.dart';
-import 'package:food_safety/common/presentation/widgets/logo.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/widgets/base_tile.dart';
+import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
+import 'package:food_safety/core/presentation/widgets/logo.dart';
 import 'package:food_safety/features/scanner/presentation/pages/scanner_page.dart';
 import 'package:food_safety/generated/l10n.dart';
 

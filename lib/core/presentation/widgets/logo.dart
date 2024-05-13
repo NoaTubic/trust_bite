@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_safety/common/presentation/app_sizes.dart';
-import 'package:food_safety/common/presentation/build_context_extensions.dart';
-import 'package:food_safety/common/presentation/image_assets.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/image_assets.dart';
 
 class Logo extends StatelessWidget {
   final double? size;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_safety/common/presentation/app_sizes.dart';
-import 'package:food_safety/common/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
 import 'package:food_safety/theme/app_colors.dart';
 
 class BaseTile extends StatelessWidget {

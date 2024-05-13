@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_safety/common/presentation/app_sizes.dart';
-import 'package:food_safety/common/presentation/build_context_extensions.dart';
-import 'package:food_safety/common/presentation/image_assets.dart';
-import 'package:food_safety/common/presentation/widgets/custom_scaffold.dart';
-import 'package:food_safety/common/presentation/widgets/logo.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/image_assets.dart';
+import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
+import 'package:food_safety/core/presentation/widgets/logo.dart';
 import 'package:food_safety/features/splash/presentation/noifiers/splash_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

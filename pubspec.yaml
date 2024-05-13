@@ -33,6 +33,7 @@ dependencies:
   intl: ^0.18.1
   json_annotation: ^4.8.1
   loggy: ^2.0.3
+  permission_handler: ^11.3.1
   q_architecture: ^0.1.9
   retrofit: ^4.1.0
   sentry_flutter: ^7.16.1

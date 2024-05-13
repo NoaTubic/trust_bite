@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 final class AppTextStyles extends ThemeExtension<AppTextStyles> {
-  final TextStyle? regular;
-  final TextStyle? bold;
-  final TextStyle? boldLarge;
+  final TextStyle? text;
+  final TextStyle? headings;
+  final TextStyle? subHeadings;
 
   const AppTextStyles({
-    required this.regular,
-    required this.bold,
-    required this.boldLarge,
+    required this.text,
+    required this.headings,
+    required this.subHeadings,
   });
 
   @override
@@ -18,9 +18,9 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
     TextStyle? boldLarge,
   }) {
     return AppTextStyles(
-      regular: regular ?? this.regular,
-      bold: bold ?? this.bold,
-      boldLarge: boldLarge ?? this.boldLarge,
+      text: regular ?? text,
+      headings: bold ?? headings,
+      subHeadings: boldLarge ?? subHeadings,
     );
   }
 
@@ -30,9 +30,9 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
       return this;
     }
     return AppTextStyles(
-      regular: TextStyle.lerp(regular, other.regular, t),
-      bold: TextStyle.lerp(bold, other.bold, t),
-      boldLarge: TextStyle.lerp(boldLarge, other.boldLarge, t),
+      text: TextStyle.lerp(text, other.text, t),
+      headings: TextStyle.lerp(headings, other.headings, t),
+      subHeadings: TextStyle.lerp(subHeadings, other.subHeadings, t),
     );
   }
 }
@@ -40,14 +40,14 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
 AppTextStyles getAppTextStyles({required Color defaultColor}) {
   final baseTextStyle = TextStyle(
     color: defaultColor,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
   );
   return AppTextStyles(
-    regular: baseTextStyle,
-    bold: baseTextStyle.copyWith(fontWeight: FontWeight.w700),
-    boldLarge:
-        baseTextStyle.copyWith(fontWeight: FontWeight.w700, fontSize: 24),
+    text: baseTextStyle,
+    headings: baseTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 32),
+    subHeadings:
+        baseTextStyle.copyWith(fontWeight: FontWeight.w600, fontSize: 24),
   );
 }

@@ -9,8 +9,8 @@ final primaryTheme = _getTheme(
     primary: const Color(0xFFD65751),
     secondary: const Color(0xFFF69284),
     tertiary: const Color(0xFF193A66),
-    foreground: const Color(0xFFFFFFFF),
-    background: const Color(0xFF000000),
+    foreground: const Color(0xFF000000),
+    background: const Color(0xFFFFFFFF),
   ),
 );
 

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_safety/common/presentation/app_sizes.dart';
 import 'package:food_safety/common/presentation/build_context_extensions.dart';
 import 'package:food_safety/common/presentation/widgets/base_tile.dart';
 import 'package:food_safety/common/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/common/presentation/widgets/logo.dart';
+import 'package:food_safety/features/scanner/presentation/pages/scanner_page.dart';
+import 'package:food_safety/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home';
@@ -16,6 +19,7 @@ class HomePage extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Logo(
                 size: AppSizes.logoSizeSmall,
@@ -23,7 +27,7 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(width: AppSizes.normalSpacing),
               Text(
-                'Hello, user!',
+                S.current.hello,
                 style: context.appTextStyles.subHeadings!
                     .copyWith(color: context.appColors.foreground!),
               ),
@@ -31,9 +35,9 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(height: AppSizes.largeSpacing),
           BaseTile(
-            label: 'Scan  product',
-            icon: Icons.qr_code_scanner,
-            onTap: () {},
+            label: S.current.scan_barcode,
+            icon: FontAwesomeIcons.barcode,
+            onTap: () => Navigator.of(context).pushNamed(ScannerPage.routeName),
           ),
         ],
       ),

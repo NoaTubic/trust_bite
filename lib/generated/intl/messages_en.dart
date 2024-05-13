@@ -22,8 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "hello": MessageLookupByLibrary.simpleMessage("Hello, user!"),
         "permission_denied": MessageLookupByLibrary.simpleMessage(
             "Permission has been denied, please enable it in device settings"),
+        "scan_barcode":
+            MessageLookupByLibrary.simpleMessage("Scan product barcode"),
+        "scanner_helper": MessageLookupByLibrary.simpleMessage(
+            "Please align the barcode within the frame to scan"),
         "unknown_error_occurred":
             MessageLookupByLibrary.simpleMessage("Unknown error occurred")
       };

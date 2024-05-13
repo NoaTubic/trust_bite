@@ -21,11 +21,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_form_builder: ^9.2.1
+  flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
   flutter_loggy: ^2.0.2
   flutter_loggy_dio: ^3.0.1
   flutter_svg: ^2.0.9
+  font_awesome_flutter: ^10.7.0
   form_builder_validators: ^9.1.0
   hooks_riverpod: ^2.4.10
   intl: ^0.18.1

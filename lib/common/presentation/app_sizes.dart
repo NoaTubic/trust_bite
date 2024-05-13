@@ -17,7 +17,9 @@ abstract class AppSizes {
   static const double logoSizeSmall = 52;
   static const double logoSize = 200;
 
-  static const double normalCircularRadius = 8;
+  static const double iconButtonSize = 28;
+
+  static const double normalCircularRadius = 16;
   static const BorderRadiusGeometry normalCircularBorderRadius =
       BorderRadius.all(
     Radius.circular(normalCircularRadius),

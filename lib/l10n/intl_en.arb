@@ -1,5 +1,8 @@
 {
-    "@@locale": "en",
-    "unknown_error_occurred": "Unknown error occurred",
-    "permission_denied": "Permission has been denied, please enable it in device settings"
+  "@@locale": "en",
+  "unknown_error_occurred": "Unknown error occurred",
+  "permission_denied": "Permission has been denied, please enable it in device settings",
+  "hello": "Hello, user!",
+  "scan_barcode": "Scan product barcode",
+  "scanner_helper": "Please align the barcode within the frame to scan"
 }

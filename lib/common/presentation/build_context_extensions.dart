@@ -7,4 +7,6 @@ import '../../theme/app_text_styles.dart';
 extension BuildContextExtensions on BuildContext {
   AppTextStyles get appTextStyles => Theme.of(this).extension<AppTextStyles>()!;
   AppColors get appColors => Theme.of(this).extension<AppColors>()!;
+  double get screenWidth => MediaQuery.of(this).size.width;
+  double get screenHeight => MediaQuery.of(this).size.height;
 }

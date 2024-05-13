@@ -69,6 +69,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Hello, user!`
+  String get hello {
+    return Intl.message(
+      'Hello, user!',
+      name: 'hello',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan product barcode`
+  String get scan_barcode {
+    return Intl.message(
+      'Scan product barcode',
+      name: 'scan_barcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please align the barcode within the frame to scan`
+  String get scanner_helper {
+    return Intl.message(
+      'Please align the barcode within the frame to scan',
+      name: 'scanner_helper',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,30 +1,33 @@
 import 'dart:async';
-import 'dart:io';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:food_safety/core/constants/duration_constants.dart';
-import 'package:food_safety/core/domain/failures/permission_failure.dart';
+import 'package:food_safety/features/product_details/domain/usecases/get_product_details.dart';
 import 'package:food_safety/features/scanner/data/mobile_scanner_controller_wrapper.dart';
-import 'package:food_safety/features/scanner/domain/failures/load_from_gallery_canceled_failure.dart';
 import 'package:food_safety/features/scanner/domain/usecases/initialize_scanner.dart';
 import 'package:food_safety/features/scanner/presentation/notifiers/scanner_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import 'package:q_architecture/q_architecture.dart';
 
 final scannerNotifierProvider =
     StateNotifierProvider<ScannerNotifier, ScannerState>(
   (ref) => ScannerNotifier(
-    ref.read(initializeScannerUseCaseProvider),
+    ref.watch(initializeScannerUseCaseProvider),
+    ref.watch(getProductDetailsUseCaseProvider),
     ref,
   ),
 );
 
 class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
   final InitializeScanner _initializeScanner;
-  ScannerNotifier(this._initializeScanner, Ref ref)
-      : super(
+  final GetProductDetails _getProductDetails;
+  ScannerNotifier(
+    this._initializeScanner,
+    this._getProductDetails,
+    Ref ref,
+  ) : super(
           ref,
           ScannerState.initial(),
         );
@@ -45,7 +48,11 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
       _setInitializationFailedState();
       return;
     } else {
-      await state.controllerWrapper!.controller.stop();
+      // await state.controllerWrapper!.controller.stop();
+      _subscription =
+          state.controllerWrapper!.controller.barcodes.listen((code) async {
+        await onCodeDetected(code);
+      });
       clearLoading();
     }
   }
@@ -82,11 +89,20 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
   Future<void> onCodeDetected(BarcodeCapture barcode) async {
     await throttle(
       () async {
-        if (_shouldIgnoreDetection()) return;
-
+        log('Barcode detected: ${barcode.barcodes.first.displayValue}');
+        // if (_shouldIgnoreDetection()) return;
         _prepareForCodeProcessing();
-
-        await _processScannedCode(barcode);
+        await Future.delayed(
+          const Duration(seconds: 1),
+        );
+        state = state.copyWith(
+          shouldNavigateToProductDetails: true,
+        );
+        clearLoading();
+        state = state.copyWith(
+          shouldNavigateToProductDetails: false,
+        );
+        // await _processScannedCode(barcode);
       },
       duration: DurationConstants.scannerThrottleDuration,
     );
@@ -102,12 +118,19 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
   }
 
   Future<void> _processScannedCode(BarcodeCapture code) async {
-    // final scanResult =
+    final scanResult =
+        await _getProductDetails(code.barcodes.first.displayValue!);
 
-    // scanResult.fold(
-    //   (failure) => state.copyWith(failure: failure),
-    //   (routeWithData) => (){},
-    // );
+    scanResult.fold(
+      (failure) => state = state.copyWith(failure: failure),
+      (routeWithData) {
+        state = state.copyWith(
+          failure: null,
+          shouldNavigateToProductDetails: true,
+        );
+        clearLoading();
+      },
+    );
   }
 
   Future<void> pauseScanner() async {

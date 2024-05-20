@@ -29,6 +29,7 @@ mixin _$ScannerState {
   BarcodeCapture get previousBarcodeCapture =>
       throw _privateConstructorUsedError;
   bool get showGalleryPermissionDialog => throw _privateConstructorUsedError;
+  bool get shouldNavigateToProductDetails => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ScannerStateCopyWith<ScannerState> get copyWith =>
@@ -52,7 +53,8 @@ abstract class $ScannerStateCopyWith<$Res> {
       bool isCameraPermissionRequested,
       bool isGalleryPermissionRequested,
       BarcodeCapture previousBarcodeCapture,
-      bool showGalleryPermissionDialog});
+      bool showGalleryPermissionDialog,
+      bool shouldNavigateToProductDetails});
 }
 
 /// @nodoc
@@ -79,6 +81,7 @@ class _$ScannerStateCopyWithImpl<$Res, $Val extends ScannerState>
     Object? isGalleryPermissionRequested = null,
     Object? previousBarcodeCapture = null,
     Object? showGalleryPermissionDialog = null,
+    Object? shouldNavigateToProductDetails = null,
   }) {
     return _then(_value.copyWith(
       isInitialized: null == isInitialized
@@ -125,6 +128,10 @@ class _$ScannerStateCopyWithImpl<$Res, $Val extends ScannerState>
           ? _value.showGalleryPermissionDialog
           : showGalleryPermissionDialog // ignore: cast_nullable_to_non_nullable
               as bool,
+      shouldNavigateToProductDetails: null == shouldNavigateToProductDetails
+          ? _value.shouldNavigateToProductDetails
+          : shouldNavigateToProductDetails // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -148,7 +155,8 @@ abstract class _$$ScannerStateImplCopyWith<$Res>
       bool isCameraPermissionRequested,
       bool isGalleryPermissionRequested,
       BarcodeCapture previousBarcodeCapture,
-      bool showGalleryPermissionDialog});
+      bool showGalleryPermissionDialog,
+      bool shouldNavigateToProductDetails});
 }
 
 /// @nodoc
@@ -173,6 +181,7 @@ class __$$ScannerStateImplCopyWithImpl<$Res>
     Object? isGalleryPermissionRequested = null,
     Object? previousBarcodeCapture = null,
     Object? showGalleryPermissionDialog = null,
+    Object? shouldNavigateToProductDetails = null,
   }) {
     return _then(_$ScannerStateImpl(
       isInitialized: null == isInitialized
@@ -219,6 +228,10 @@ class __$$ScannerStateImplCopyWithImpl<$Res>
           ? _value.showGalleryPermissionDialog
           : showGalleryPermissionDialog // ignore: cast_nullable_to_non_nullable
               as bool,
+      shouldNavigateToProductDetails: null == shouldNavigateToProductDetails
+          ? _value.shouldNavigateToProductDetails
+          : shouldNavigateToProductDetails // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -237,7 +250,8 @@ class _$ScannerStateImpl implements _ScannerState {
       required this.isCameraPermissionRequested,
       required this.isGalleryPermissionRequested,
       required this.previousBarcodeCapture,
-      required this.showGalleryPermissionDialog});
+      required this.showGalleryPermissionDialog,
+      required this.shouldNavigateToProductDetails});
 
   @override
   final bool isInitialized;
@@ -261,10 +275,12 @@ class _$ScannerStateImpl implements _ScannerState {
   final BarcodeCapture previousBarcodeCapture;
   @override
   final bool showGalleryPermissionDialog;
+  @override
+  final bool shouldNavigateToProductDetails;
 
   @override
   String toString() {
-    return 'ScannerState(isInitialized: $isInitialized, isLoading: $isLoading, controllerWrapper: $controllerWrapper, isFlashlightOn: $isFlashlightOn, failure: $failure, isCameraPermissionGranted: $isCameraPermissionGranted, isGalleryPermissionGranted: $isGalleryPermissionGranted, isCameraPermissionRequested: $isCameraPermissionRequested, isGalleryPermissionRequested: $isGalleryPermissionRequested, previousBarcodeCapture: $previousBarcodeCapture, showGalleryPermissionDialog: $showGalleryPermissionDialog)';
+    return 'ScannerState(isInitialized: $isInitialized, isLoading: $isLoading, controllerWrapper: $controllerWrapper, isFlashlightOn: $isFlashlightOn, failure: $failure, isCameraPermissionGranted: $isCameraPermissionGranted, isGalleryPermissionGranted: $isGalleryPermissionGranted, isCameraPermissionRequested: $isCameraPermissionRequested, isGalleryPermissionRequested: $isGalleryPermissionRequested, previousBarcodeCapture: $previousBarcodeCapture, showGalleryPermissionDialog: $showGalleryPermissionDialog, shouldNavigateToProductDetails: $shouldNavigateToProductDetails)';
   }
 
   @override
@@ -281,11 +297,9 @@ class _$ScannerStateImpl implements _ScannerState {
             (identical(other.isFlashlightOn, isFlashlightOn) ||
                 other.isFlashlightOn == isFlashlightOn) &&
             (identical(other.failure, failure) || other.failure == failure) &&
-            (identical(other.isCameraPermissionGranted,
-                    isCameraPermissionGranted) ||
+            (identical(other.isCameraPermissionGranted, isCameraPermissionGranted) ||
                 other.isCameraPermissionGranted == isCameraPermissionGranted) &&
-            (identical(other.isGalleryPermissionGranted,
-                    isGalleryPermissionGranted) ||
+            (identical(other.isGalleryPermissionGranted, isGalleryPermissionGranted) ||
                 other.isGalleryPermissionGranted ==
                     isGalleryPermissionGranted) &&
             (identical(other.isCameraPermissionRequested,
@@ -301,7 +315,11 @@ class _$ScannerStateImpl implements _ScannerState {
             (identical(other.showGalleryPermissionDialog,
                     showGalleryPermissionDialog) ||
                 other.showGalleryPermissionDialog ==
-                    showGalleryPermissionDialog));
+                    showGalleryPermissionDialog) &&
+            (identical(other.shouldNavigateToProductDetails,
+                    shouldNavigateToProductDetails) ||
+                other.shouldNavigateToProductDetails ==
+                    shouldNavigateToProductDetails));
   }
 
   @override
@@ -317,7 +335,8 @@ class _$ScannerStateImpl implements _ScannerState {
       isCameraPermissionRequested,
       isGalleryPermissionRequested,
       previousBarcodeCapture,
-      showGalleryPermissionDialog);
+      showGalleryPermissionDialog,
+      shouldNavigateToProductDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -338,7 +357,8 @@ abstract class _ScannerState implements ScannerState {
       required final bool isCameraPermissionRequested,
       required final bool isGalleryPermissionRequested,
       required final BarcodeCapture previousBarcodeCapture,
-      required final bool showGalleryPermissionDialog}) = _$ScannerStateImpl;
+      required final bool showGalleryPermissionDialog,
+      required final bool shouldNavigateToProductDetails}) = _$ScannerStateImpl;
 
   @override
   bool get isInitialized;
@@ -362,6 +382,8 @@ abstract class _ScannerState implements ScannerState {
   BarcodeCapture get previousBarcodeCapture;
   @override
   bool get showGalleryPermissionDialog;
+  @override
+  bool get shouldNavigateToProductDetails;
   @override
   @JsonKey(ignore: true)
   _$$ScannerStateImplCopyWith<_$ScannerStateImpl> get copyWith =>

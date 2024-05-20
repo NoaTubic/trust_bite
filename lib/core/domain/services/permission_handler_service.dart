@@ -10,7 +10,7 @@ final permissionHandlerServiceProvider = Provider<PermissionHandlerService>(
   ),
 );
 
-abstract class PermissionHandlerService {
+abstract interface class PermissionHandlerService {
   EitherFailureOr<void> requestPermission({
     required Permission permission,
   });

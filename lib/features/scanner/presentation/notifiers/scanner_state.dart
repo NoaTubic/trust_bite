@@ -21,20 +21,21 @@ class ScannerState with _$ScannerState {
     required bool isGalleryPermissionRequested,
     required BarcodeCapture previousBarcodeCapture,
     required bool showGalleryPermissionDialog,
+    required bool shouldNavigateToProductDetails,
   }) = _ScannerState;
 
   factory ScannerState.initial() => ScannerState(
-        isLoading: true,
-        isInitialized: false,
-        isCameraPermissionGranted: false,
-        isGalleryPermissionGranted: false,
-        isCameraPermissionRequested: false,
-        isGalleryPermissionRequested: false,
-        isFlashlightOn: false,
-        previousBarcodeCapture: BarcodeCapture(
-          barcodes: [],
-          image: Uint8List(0),
-        ),
-        showGalleryPermissionDialog: false,
-      );
+      isLoading: true,
+      isInitialized: false,
+      isCameraPermissionGranted: false,
+      isGalleryPermissionGranted: false,
+      isCameraPermissionRequested: false,
+      isGalleryPermissionRequested: false,
+      isFlashlightOn: false,
+      previousBarcodeCapture: BarcodeCapture(
+        barcodes: [],
+        image: Uint8List(0),
+      ),
+      showGalleryPermissionDialog: false,
+      shouldNavigateToProductDetails: false);
 }

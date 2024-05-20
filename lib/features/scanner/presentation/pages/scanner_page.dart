@@ -8,6 +8,7 @@ import 'package:food_safety/core/domain/failures/permission_failure.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
 import 'package:food_safety/core/presentation/widgets/hooks/app_lifecycle_hook.dart';
+import 'package:food_safety/features/product_details/presentation/pages/product_details_page.dart';
 import 'package:food_safety/features/scanner/presentation/notifiers/scanner_notifier.dart';
 import 'package:food_safety/features/scanner/presentation/notifiers/scanner_state.dart';
 import 'package:food_safety/features/scanner/presentation/widgets/animated_scanner_overlay.dart';
@@ -30,6 +31,7 @@ class ScannerPage extends HookConsumerWidget {
     final bool enableScannerButtons =
         scannerState.isInitialized && !scannerState.isLoading;
 
+    _registerListeners(ref, context, scannerNotifier);
     _initializeScanner(
         ref.read(scannerNotifierProvider.notifier), scannerState);
 
@@ -48,7 +50,7 @@ class ScannerPage extends HookConsumerWidget {
                       controller: scannerState.controllerWrapper!.controller,
                     )
               : Container(
-                  color: Colors.white.withOpacity(0.4),
+                  color: Colors.black.withOpacity(0.4),
                 ),
           const AnimatedOverlay(),
           Padding(
@@ -92,24 +94,25 @@ class ScannerPage extends HookConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ScannerButton(
-                      onPressed: () => scannerNotifier.toggleFlashlight(),
-                      isEnabled: enableScannerButtons,
-                      actionWidget: Stack(
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.bolt,
+                    onPressed: () => scannerNotifier.toggleFlashlight(),
+                    isEnabled: enableScannerButtons,
+                    actionWidget: Stack(
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.bolt,
+                          color: context.appColors.primary,
+                        ),
+                        AnimatedOpacity(
+                          opacity: scannerState.isFlashlightOn ? 1 : 0,
+                          duration: DurationConstants.shortAnimationDuration,
+                          child: Icon(
+                            FontAwesomeIcons.slash,
                             color: context.appColors.primary,
                           ),
-                          AnimatedOpacity(
-                            opacity: scannerState.isFlashlightOn ? 1 : 0,
-                            duration: DurationConstants.shortAnimationDuration,
-                            child: Icon(
-                              FontAwesomeIcons.slash,
-                              color: context.appColors.primary,
-                            ),
-                          )
-                        ],
-                      )),
+                        )
+                      ],
+                    ),
+                  ),
                   const ScannerButton(
                     icon: FontAwesomeIcons.images,
                   ),
@@ -145,6 +148,19 @@ class ScannerPage extends HookConsumerWidget {
         scannerNotifier.pauseScanner();
         if (scannerState.isFlashlightOn) {
           scannerNotifier.toggleFlashlight();
+        }
+      },
+    );
+  }
+
+  void _registerListeners(
+      WidgetRef ref, BuildContext context, ScannerNotifier scannerNotifier) {
+    ref.listen(
+      scannerNotifierProvider,
+      (previous, next) {
+        if (previous == next) return;
+        if (next.shouldNavigateToProductDetails) {
+          Navigator.of(context).pushNamed(ProductDetailsPage.routeName);
         }
       },
     );

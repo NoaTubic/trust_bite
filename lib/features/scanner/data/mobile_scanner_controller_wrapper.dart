@@ -15,6 +15,7 @@ class MobileScannerControllerWrapper extends Equatable {
     bool returnImage = false,
     Size? cameraResolution,
   }) : controller = MobileScannerController(
+          autoStart: true,
           facing: facing,
           detectionSpeed: detectionSpeed,
           detectionTimeoutMs: detectionTimeoutMs,

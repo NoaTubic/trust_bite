@@ -69,8 +69,8 @@ class AppStartupWidget extends ConsumerWidget {
               EnvInfo.environment != AppEnvironment.PROD,
           title: EnvInfo.appTitle,
           theme: primaryTheme,
-          darkTheme: secondaryTheme,
-          themeMode: ThemeMode.system,
+          // darkTheme: secondaryTheme,
+          // themeMode: ThemeMode.system,
           localizationsDelegates: const [
             S.delegate,
             ...GlobalMaterialLocalizations.delegates,

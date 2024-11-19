@@ -1,6 +1,6 @@
 import 'package:food_safety/features/product_details/domain/entities/product_details.dart';
 import 'package:food_safety/features/product_details/domain/usecases/get_product_details.dart';
-import 'package:q_architecture/base_state_notifier.dart';
+import 'package:q_architecture/base_notifier.dart';
 
 final productDetailsNotifier =
     BaseStateNotifierProvider<ProductDetailsNotifier, ProductDetails>(

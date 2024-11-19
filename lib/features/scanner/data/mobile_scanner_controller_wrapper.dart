@@ -22,7 +22,6 @@ class MobileScannerControllerWrapper extends Equatable {
           formats: [BarcodeFormat.code39],
           returnImage: returnImage,
           cameraResolution: cameraResolution,
-          useNewCameraSelector: true,
         );
 
   Future<void> start({CameraFacing? cameraFacingOverride}) {

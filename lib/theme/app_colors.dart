@@ -6,6 +6,9 @@ final class AppColors extends ThemeExtension<AppColors> {
   final Color? tertiary;
   final Color? foreground;
   final Color? background;
+  final Color? textLight;
+  final Color? textDark;
+  final Color? error;
 
   AppColors({
     required this.primary,
@@ -13,6 +16,9 @@ final class AppColors extends ThemeExtension<AppColors> {
     required this.tertiary,
     required this.foreground,
     required this.background,
+    required this.textLight,
+    required this.textDark,
+    required this.error,
   });
 
   @override
@@ -29,6 +35,9 @@ final class AppColors extends ThemeExtension<AppColors> {
       tertiary: tertiary ?? tertiary,
       foreground: foreground ?? foreground,
       background: background ?? this.background,
+      textLight: textLight ?? textLight,
+      textDark: textDark ?? textDark,
+      error: error ?? error,
     );
   }
 
@@ -43,6 +52,9 @@ final class AppColors extends ThemeExtension<AppColors> {
       tertiary: Color.lerp(tertiary, other.tertiary, t),
       foreground: Color.lerp(foreground, other.foreground, t),
       background: Color.lerp(background, other.background, t),
+      textLight: Color.lerp(textLight, other.textLight, t),
+      textDark: Color.lerp(textDark, other.textDark, t),
+      error: Color.lerp(error, other.error, t),
     );
   }
 }

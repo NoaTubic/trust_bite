@@ -20,7 +20,8 @@ class CustomScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor ?? Colors.white,
+      resizeToAvoidBottomInset: true,
       appBar: appBar,
       body: SafeArea(
         child: Padding(

@@ -99,6 +99,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid email and password combination`
+  String get login_error_wrong_credentials {
+    return Intl.message(
+      'Invalid email and password combination',
+      name: 'login_error_wrong_credentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email already in use`
+  String get login_error_email_already_in_user {
+    return Intl.message(
+      'Email already in use',
+      name: 'login_error_email_already_in_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weak password`
+  String get weak_password {
+    return Intl.message(
+      'Weak password',
+      name: 'weak_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server error occurred`
+  String get server_error {
+    return Intl.message(
+      'Server error occurred',
+      name: 'server_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email not verified. Please check your email for verification link.`
+  String get email_not_verified {
+    return Intl.message(
+      'Email not verified. Please check your email for verification link.',
+      name: 'email_not_verified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Google sign in cancelled`
+  String get google_sign_in_canceled {
+    return Intl.message(
+      'Google sign in cancelled',
+      name: 'google_sign_in_canceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User not found`
+  String get user_not_found {
+    return Intl.message(
+      'User not found',
+      name: 'user_not_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

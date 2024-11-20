@@ -22,14 +22,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "email_not_verified": MessageLookupByLibrary.simpleMessage(
+            "Email not verified. Please check your email for verification link."),
+        "google_sign_in_canceled":
+            MessageLookupByLibrary.simpleMessage("Google sign in cancelled"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello, user!"),
+        "login_error_email_already_in_user":
+            MessageLookupByLibrary.simpleMessage("Email already in use"),
+        "login_error_wrong_credentials": MessageLookupByLibrary.simpleMessage(
+            "Invalid email and password combination"),
         "permission_denied": MessageLookupByLibrary.simpleMessage(
             "Permission has been denied, please enable it in device settings"),
         "scan_barcode":
             MessageLookupByLibrary.simpleMessage("Scan product barcode"),
         "scanner_helper": MessageLookupByLibrary.simpleMessage(
             "Please align the barcode within the frame to scan"),
+        "server_error":
+            MessageLookupByLibrary.simpleMessage("Server error occurred"),
         "unknown_error_occurred":
-            MessageLookupByLibrary.simpleMessage("Unknown error occurred")
+            MessageLookupByLibrary.simpleMessage("Unknown error occurred"),
+        "user_not_found":
+            MessageLookupByLibrary.simpleMessage("User not found"),
+        "weak_password": MessageLookupByLibrary.simpleMessage("Weak password")
       };
 }

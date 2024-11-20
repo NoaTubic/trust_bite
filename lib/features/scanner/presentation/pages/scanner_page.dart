@@ -7,7 +7,7 @@ import 'package:food_safety/core/constants/duration_constants.dart';
 import 'package:food_safety/core/domain/failures/permission_failure.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
-import 'package:food_safety/core/presentation/widgets/hooks/app_lifecycle_hook.dart';
+import 'package:food_safety/core/presentation/hooks/app_lifecycle_hook.dart';
 import 'package:food_safety/features/product_details/presentation/pages/product_details_page.dart';
 import 'package:food_safety/features/scanner/presentation/notifiers/scanner_notifier.dart';
 import 'package:food_safety/features/scanner/presentation/notifiers/scanner_state.dart';

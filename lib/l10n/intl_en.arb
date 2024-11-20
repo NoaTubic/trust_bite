@@ -4,5 +4,12 @@
   "permission_denied": "Permission has been denied, please enable it in device settings",
   "hello": "Hello, user!",
   "scan_barcode": "Scan product barcode",
-  "scanner_helper": "Please align the barcode within the frame to scan"
+  "scanner_helper": "Please align the barcode within the frame to scan",
+  "login_error_wrong_credentials": "Invalid email and password combination",
+  "login_error_email_already_in_user": "Email already in use",
+  "weak_password": "Weak password",
+  "server_error": "Server error occurred",
+  "email_not_verified": "Email not verified. Please check your email for verification link.",
+  "google_sign_in_canceled": "Google sign in cancelled",
+  "user_not_found": "User not found"
 }

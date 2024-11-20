@@ -1,11 +1,16 @@
-// ignore_for_file: always_use_package_imports
+// ignore_for_file: always_use_package_imports, library_prefixes
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_loggy/flutter_loggy.dart';
 import 'package:food_safety/core/domain/router/routes.dart';
+import 'package:food_safety/firebase_options/firebase_options_dev.dart'
+    as firebaseOptionsDev;
+import 'package:food_safety/firebase_options/firebase_options_prod.dart'
+    as firebaseOptionsProd;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loggy/loggy.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -18,6 +23,12 @@ import 'theme/theme.dart';
 
 Future<void> mainCommon(AppEnvironment environment) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: EnvInfo.isProduction
+        ? firebaseOptionsProd.DefaultFirebaseOptions.currentPlatform
+        : firebaseOptionsDev.DefaultFirebaseOptions.currentPlatform,
+  );
   EnvInfo.initialize(environment);
   _registerErrorHandlers();
   Loggy.initLoggy(

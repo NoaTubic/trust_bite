@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:food_safety/core/presentation/image_assets.dart';
 
 enum Allergen {
   gluten,
@@ -45,33 +45,63 @@ extension AllergenExtension on Allergen {
     }
   }
 
-  IconData get iconData {
-    // Replace these with actual icons
+  String get icon {
     switch (this) {
       case Allergen.gluten:
-        return Icons.eco;
+        return ImageAssets.gluten;
       case Allergen.milk:
-        return Icons.local_drink;
+        return ImageAssets.milk;
       case Allergen.eggs:
-        return Icons.egg;
+        return ImageAssets.eggs;
       case Allergen.nuts:
-        return Icons.ac_unit;
+        return ImageAssets.nuts;
       case Allergen.peanuts:
-        return Icons.emoji_food_beverage;
+        return ImageAssets.peanuts;
       case Allergen.celery:
-        return Icons.local_florist;
+        return ImageAssets.celery;
       case Allergen.soybean:
-        return Icons.spa;
+        return ImageAssets.soyBean;
       case Allergen.lupin:
-        return Icons.bubble_chart;
+        return ImageAssets.lupin;
       case Allergen.fish:
-        return Icons.water;
+        return ImageAssets.fish;
       case Allergen.crustaceans:
-        return Icons.set_meal;
+        return ImageAssets.crab;
       case Allergen.molluscs:
-        return Icons.beach_access;
+        return ImageAssets.abalone;
       case Allergen.sulphurDioxide:
-        return Icons.science;
+        return ImageAssets.sulfurDioxide;
+    }
+  }
+
+  static Allergen fromString(String allergen) {
+    switch (allergen) {
+      case 'Gluten':
+        return Allergen.gluten;
+      case 'Milk':
+        return Allergen.milk;
+      case 'Eggs':
+        return Allergen.eggs;
+      case 'Nuts':
+        return Allergen.nuts;
+      case 'Peanuts':
+        return Allergen.peanuts;
+      case 'Celery':
+        return Allergen.celery;
+      case 'Soybean':
+        return Allergen.soybean;
+      case 'Lupin':
+        return Allergen.lupin;
+      case 'Fish':
+        return Allergen.fish;
+      case 'Crustaceans':
+        return Allergen.crustaceans;
+      case 'Molluscs':
+        return Allergen.molluscs;
+      case 'Sulphur Dioxide':
+        return Allergen.sulphurDioxide;
+      default:
+        throw Exception('Invalid allergen');
     }
   }
 }

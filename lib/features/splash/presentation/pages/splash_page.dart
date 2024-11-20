@@ -3,6 +3,7 @@ import 'package:food_safety/core/presentation/build_context_extensions.dart';
 
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/logo.dart';
+import 'package:food_safety/features/auth/presentation/notifiers/auth_notifier.dart';
 import 'package:food_safety/features/splash/presentation/noifiers/splash_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -33,9 +34,11 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   }
 
   void _subscribeToNextPageListener(BuildContext context) {
+    ref.watch(authNotifierProvider.notifier).listenAuthChanges();
+
     ref.listen<String?>(splashNotifierProvider, (_, routeName) async {
       if (routeName != null) {
-        Navigator.of(context).pushReplacementNamed(routeName);
+        context.pushReplacementNamed(routeName);
       }
     });
   }

@@ -60,6 +60,106 @@ class S {
     );
   }
 
+  /// `Welcome back`
+  String get welcome_back {
+    return Intl.message(
+      'Welcome back',
+      name: 'welcome_back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log In`
+  String get login {
+    return Intl.message(
+      'Log In',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Or continue with`
+  String get or_continue_with {
+    return Intl.message(
+      'Or continue with',
+      name: 'or_continue_with',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get dont_have_account {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'dont_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get already_have_account {
+    return Intl.message(
+      'Already have an account?',
+      name: 'already_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get sign_up {
+    return Intl.message(
+      'Sign up',
+      name: 'sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Permission has been denied, please enable it in device settings`
   String get permission_denied {
     return Intl.message(
@@ -165,6 +265,76 @@ class S {
     return Intl.message(
       'User not found',
       name: 'user_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account successfully created`
+  String get account_successfully_created {
+    return Intl.message(
+      'Account successfully created',
+      name: 'account_successfully_created',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here you can select if you have any allergens`
+  String get select_allergens {
+    return Intl.message(
+      'Here you can select if you have any allergens',
+      name: 'select_allergens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm allergens`
+  String get confirm_allergens {
+    return Intl.message(
+      'Confirm allergens',
+      name: 'confirm_allergens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No allergens`
+  String get no_allergens {
+    return Intl.message(
+      'No allergens',
+      name: 'no_allergens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allergens successfully updated`
+  String get allergens_successfully_updated {
+    return Intl.message(
+      'Allergens successfully updated',
+      name: 'allergens_successfully_updated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi, `
+  String get hi {
+    return Intl.message(
+      'Hi, ',
+      name: 'hi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to Trust Bite`
+  String get welcome {
+    return Intl.message(
+      'Welcome to Trust Bite',
+      name: 'welcome',
       desc: '',
       args: [],
     );

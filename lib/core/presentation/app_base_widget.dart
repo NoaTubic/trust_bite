@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/features/auth/presentation/pages/login_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loggy/loggy.dart';
 import 'package:q_architecture/q_architecture.dart';
@@ -24,6 +26,19 @@ class _AppBaseWidgetState extends ConsumerState<AppBaseWidget> {
     return BaseWidget(
       onGlobalFailure: onGlobalFailure,
       onGlobalInfo: onGlobalInfo,
+      loadingIndicator: Container(
+        color: Colors.black.withOpacity(0.5),
+        height: double.infinity,
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(
+              color: context.appColors.primary,
+            ),
+          ],
+        ),
+      ),
       child: widget.child,
     );
   }

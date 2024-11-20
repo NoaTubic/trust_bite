@@ -1,7 +1,6 @@
 import 'package:food_safety/features/auth/data/model/registration_request.dart';
 import 'package:food_safety/features/auth/data/repository/auth_repository.dart';
 import 'package:q_architecture/base_notifier.dart';
-import 'package:q_architecture/q_architecture.dart';
 
 final registrationNotifierProvider =
     BaseStateNotifierProvider<RegistrationNotifier, void>(
@@ -39,6 +38,7 @@ class RegistrationNotifier extends BaseStateNotifier<void> {
         _authRepository.verifyEmail();
         return true;
       },
+      globalLoading: true,
     );
   }
 

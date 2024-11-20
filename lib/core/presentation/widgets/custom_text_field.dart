@@ -3,6 +3,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
 import 'package:food_safety/features/splash/presentation/pages/splash_page.dart';
+import 'package:food_safety/theme/fonts.dart';
+import 'package:gap/gap.dart';
 
 class CustomTextField extends StatelessWidget {
   final String name;
@@ -87,40 +89,37 @@ class CustomTextField extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: controller,
-              obscureText: obscureText,
-              keyboardType: keyboardType,
-              onChanged: (value) => field.didChange(value),
-              decoration: InputDecoration(
-                hintText: hintText ?? 'Enter $label',
-                enabledBorder: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.circular(AppSizes.normalCircularRadius),
-                  borderSide:
-                      BorderSide(color: context.appColors.primary!, width: 2),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.circular(AppSizes.normalCircularRadius),
-                  borderSide:
-                      BorderSide(color: context.appColors.primary!, width: 2),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 16,
-                ),
-                hintStyle: TextStyle(
-                  color: context.appColors.textDark!.withOpacity(0.5),
-                  fontSize: 16,
+            Text(label, style: context.appTextStyles.normalText),
+            const Gap(AppSizes.smallSpacing),
+            ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: AppSizes.textFieldHeight),
+              child: TextField(
+                controller: controller,
+                obscureText: obscureText,
+                keyboardType: keyboardType,
+                onChanged: (value) => field.didChange(value),
+                decoration: InputDecoration(
+                  hintText: hintText ?? 'Enter $label',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(AppSizes.normalCircularRadius),
+                    borderSide:
+                        BorderSide(color: context.appColors.primary!, width: 2),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(AppSizes.normalCircularRadius),
+                    borderSide:
+                        BorderSide(color: context.appColors.primary!, width: 2),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: AppSizes.compactSpacing,
+                    vertical: AppSizes.normalSpacing,
+                  ),
+                  hintStyle: TextStyle(
+                    color: context.appColors.textDark!.withOpacity(0.5),
+                    fontSize: FontSizes.s14,
+                  ),
                 ),
               ),
             ),

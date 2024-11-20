@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food_safety/core/presentation/widgets/custom_app_bar.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/widgets/custom_button.dart';
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
-
+import 'package:food_safety/core/presentation/widgets/custom_toast.dart';
 import 'package:food_safety/features/allergen_selection/domain/allergen.dart';
 import 'package:food_safety/features/allergen_selection/presentation/notifiers/allergen_selection_notifier.dart';
 import 'package:food_safety/features/allergen_selection/presentation/widgets/allergen_tile.dart';
+import 'package:food_safety/features/home/presentation/pages/home_page.dart';
+import 'package:food_safety/generated/l10n.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AllergenSelectionPage extends ConsumerWidget {
@@ -17,21 +22,21 @@ class AllergenSelectionPage extends ConsumerWidget {
     final notifier = ref.read(allergenSelectionNotifierProvider.notifier);
 
     return CustomScaffold(
-      // appBar: CustomAppBar(
-      //     title: 'Here you can select if you have any allergens  '),
       body: Column(
         children: [
-          const Text(
-            'Here you can select if you have any allergens',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          Text(
+            S.current.select_allergens,
+            style: context.appTextStyles.headingsBold!
+                .copyWith(color: context.appColors.primary),
           ),
-          const SizedBox(height: 16),
+          const Gap(AppSizes.mediumSpacing),
           Expanded(
+            flex: 11,
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
+                crossAxisSpacing: AppSizes.normalSpacing,
+                mainAxisSpacing: AppSizes.normalSpacing,
               ),
               itemCount: Allergen.values.length,
               itemBuilder: (context, index) {
@@ -40,31 +45,49 @@ class AllergenSelectionPage extends ConsumerWidget {
 
                 return AllergenTile(
                   label: allergen.displayName,
-                  iconData: allergen.iconData,
+                  icon: allergen.icon,
                   isSelected: isSelected,
                   onTap: () => notifier.toggleAllergen(allergen),
                 );
               },
             ),
           ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              // Handle confirmation logic
-              print('Selected allergens: $selectedAllergens');
-            },
-            child: const Text('No Allergens'),
+          CustomButton.secondary(
+            text: S.current.no_allergens,
+            onPressed: () => _noAllergens(context, ref),
+            context: context,
           ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              // Handle confirmation logic
-              print('Selected allergens: $selectedAllergens');
-            },
-            child: const Text('Confirm allergens'),
+          const Gap(AppSizes.normalSpacing),
+          CustomButton.primary(
+            text: S.current.confirm_allergens,
+            onPressed: () => _confirmAllergens(context, ref),
+            context: context,
+          ),
+          Spacer(
+            flex: 1,
           ),
         ],
       ),
     );
+  }
+
+  void _noAllergens(BuildContext context, WidgetRef ref) {
+    ref
+        .read(allergenSelectionNotifierProvider.notifier)
+        .setAllergens(noAllergens: true);
+    context.pushNamed(HomePage.routeName);
+    CustomToast(
+      message: S.current.allergens_successfully_updated,
+      isWarning: false,
+    ).show(context);
+  }
+
+  void _confirmAllergens(BuildContext context, WidgetRef ref) {
+    ref.read(allergenSelectionNotifierProvider.notifier).setAllergens();
+    context.pushNamed(HomePage.routeName);
+    CustomToast(
+      message: S.current.allergens_successfully_updated,
+      isWarning: false,
+    ).show(context);
   }
 }

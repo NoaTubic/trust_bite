@@ -20,6 +20,20 @@ class UserNotifier extends SimpleStateNotifier<FoodSafetyUser?> {
 
   UserNotifier(this._authRepository, Ref ref) : super(ref, null);
 
+  Future<FoodSafetyUser?> getUserAsync() async {
+    _authRepository.getSignedInUser().listen(
+      (user) {
+        user.fold(
+          (failure) => null,
+          (user) {
+            state = user;
+          },
+        );
+      },
+    );
+    return null;
+  }
+
   Future<void> getUser() async => _authRepository.getSignedInUser().listen(
         (user) {
           user.fold(

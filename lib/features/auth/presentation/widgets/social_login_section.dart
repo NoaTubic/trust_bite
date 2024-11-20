@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/image_assets.dart';
 
 class SocialLoginSection extends StatelessWidget {
   final VoidCallback? onGoogleSignIn;
@@ -15,25 +17,38 @@ class SocialLoginSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _buildSocialButton(Icons.facebook, onFacebookSignIn),
-        const SizedBox(width: AppSizes.normalSpacing),
-        _buildSocialButton(Icons.g_mobiledata, onGoogleSignIn, size: 40),
-        const SizedBox(width: AppSizes.normalSpacing),
-        _buildSocialButton(Icons.apple, onAppleSignIn),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(
+          top: AppSizes.largeSpacing, bottom: AppSizes.mediumSpacing),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SocialButton(icon: ImageAssets.facebook),
+          SizedBox(width: AppSizes.xlSpacing),
+          SocialButton(icon: ImageAssets.google),
+          SizedBox(width: AppSizes.xlSpacing),
+          SocialButton(icon: ImageAssets.apple),
+        ],
+      ),
     );
   }
+}
 
-  Widget _buildSocialButton(IconData icon, VoidCallback? onPressed,
-      {double? size = 28}) {
-    return IconButton(
-      onPressed: onPressed,
-      icon: Icon(icon, size: size),
-      color: Colors.black,
+class SocialButton extends StatelessWidget {
+  final String icon;
+  final void Function()? onPressed;
+  const SocialButton({
+    super.key,
+    required this.icon,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: SvgPicture.asset(icon),
     );
   }
 }

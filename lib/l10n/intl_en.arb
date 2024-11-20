@@ -1,6 +1,16 @@
 {
   "@@locale": "en",
   "unknown_error_occurred": "Unknown error occurred",
+  "welcome_back": "Welcome back",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "forgot_password": "Forgot password?",
+  "login": "Log In",
+  "or_continue_with": "Or continue with",
+  "dont_have_account": "Don't have an account?",
+  "already_have_account": "Already have an account?",
+  "sign_up": "Sign up",
   "permission_denied": "Permission has been denied, please enable it in device settings",
   "hello": "Hello, user!",
   "scan_barcode": "Scan product barcode",
@@ -11,5 +21,12 @@
   "server_error": "Server error occurred",
   "email_not_verified": "Email not verified. Please check your email for verification link.",
   "google_sign_in_canceled": "Google sign in cancelled",
-  "user_not_found": "User not found"
+  "user_not_found": "User not found",
+  "account_successfully_created": "Account successfully created",
+  "select_allergens": "Here you can select if you have any allergens",
+  "confirm_allergens": "Confirm allergens",
+  "no_allergens": "No allergens",
+  "allergens_successfully_updated": "Allergens successfully updated",
+  "hi": "Hi, ",
+  "welcome": "Welcome to Trust Bite"
 }

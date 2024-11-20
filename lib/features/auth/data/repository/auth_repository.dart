@@ -89,9 +89,9 @@ class AuthRepositoryImpl with ErrorToFailureMixin implements AuthRepository {
             password: userCredentials.password,
           );
 
-          if (!_firebaseAuth.currentUser!.emailVerified) {
-            return Left(Failure(title: S.current.email_not_verified));
-          }
+          // if (!_firebaseAuth.currentUser!.emailVerified) {
+          //   return Left(Failure(title: S.current.email_not_verified));
+          // }
           await _usersRepository.initializeUser();
           return const Right(null);
         },

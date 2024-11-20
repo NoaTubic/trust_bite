@@ -54,7 +54,7 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
 AppTextStyles getAppTextStyles({required Color defaultColor}) {
   final baseTextStyle = TextStyle(
     color: defaultColor,
-    fontSize: FontSizes.s12,
+    fontSize: FontSizes.s14,
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
   );

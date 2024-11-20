@@ -11,5 +11,8 @@ extension BuildContextExtensions on BuildContext {
   double get screenHeight => MediaQuery.of(this).size.height;
   void pushNamed(String routeName) => Navigator.of(this).pushNamed(routeName);
 
+  void pushReplacementNamed(String routeName) =>
+      Navigator.of(this).pushReplacementNamed(routeName);
+
   void pop() => Navigator.of(this).pop();
 }

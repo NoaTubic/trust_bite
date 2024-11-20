@@ -1,21 +1,19 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
-
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/custom_toast.dart';
-
 import 'package:food_safety/core/presentation/widgets/logo.dart';
+import 'package:food_safety/features/home/presentation/pages/home_page.dart';
 import 'package:food_safety/features/allergen_selection/presentation/pages/allergen_selection_page.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/auth_notifier.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/auth_state.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/login_notifier.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/user_notifier.dart';
+import 'package:food_safety/features/auth/presentation/pages/registration_page.dart';
 import 'package:food_safety/features/auth/presentation/widgets/login_form.dart';
-import 'package:food_safety/features/home/presentation/pages/home_page.dart';
-
+import 'package:food_safety/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:q_architecture/base_notifier.dart';
@@ -51,11 +49,12 @@ class LoginPage extends ConsumerWidget {
     );
 
     return CustomScaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Gap(AppSizes.largeSpacing),
             Center(
               child: Logo(
                 size: AppSizes.logoSizeMedium,
@@ -64,8 +63,8 @@ class LoginPage extends ConsumerWidget {
             ),
             Gap(AppSizes.largeSpacing),
             Text(
-              'Welcome back',
-              style: context.appTextStyles.subHeadings,
+              S.current.welcome_back,
+              style: context.appTextStyles.headingsBold,
             ),
             Gap(AppSizes.mediumSpacing),
             LoginForm(
@@ -74,7 +73,7 @@ class LoginPage extends ConsumerWidget {
                   .login(email, password),
               onGoogleSignIn: () =>
                   ref.read(loginNotifierProvider.notifier).loginWithGoogle(),
-              onSignUp: () => Navigator.of(context).pushNamed('/registration'),
+              onSignUp: () => context.pushNamed(RegistrationPage.routeName),
             ),
           ],
         ),

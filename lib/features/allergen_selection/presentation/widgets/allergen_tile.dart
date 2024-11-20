@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
-import 'package:food_safety/core/presentation/widgets/back_button.dart';
+import 'package:food_safety/theme/fonts.dart';
+import 'package:gap/gap.dart';
 
 class AllergenTile extends StatelessWidget {
   final String label;
-  final IconData iconData;
+  final String icon;
   final bool isSelected;
   final VoidCallback onTap;
 
   const AllergenTile({
     super.key,
     required this.label,
-    required this.iconData,
+    required this.icon,
     required this.isSelected,
     required this.onTap,
   });
@@ -22,7 +24,7 @@ class AllergenTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(AppSizes.compactSpacing),
+        padding: EdgeInsets.all(AppSizes.smallSpacing),
         decoration: BoxDecoration(
           color: context.appColors.secondary,
           borderRadius: BorderRadius.circular(AppSizes.normalCircularRadius),
@@ -36,23 +38,18 @@ class AllergenTile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              iconData,
-              color:
-                  isSelected ? context.appColors.primary : Colors.grey.shade700,
-              size: 32,
+            SvgPicture.asset(
+              icon,
+              width: AppSizes.largeIconSize,
+              height: AppSizes.largeIconSize,
             ),
-            const SizedBox(height: 4),
+            const Gap(AppSizes.tinySpacing),
             Text(
               label,
               maxLines: 2,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: isSelected
-                      ? context.appColors.primary
-                      : Colors.grey.shade700,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12),
+              style: context.appTextStyles.normalTextBold!.copyWith(
+                  color: context.appColors.primary, fontSize: FontSizes.s12),
             ),
           ],
         ),

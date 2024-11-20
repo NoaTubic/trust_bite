@@ -20,6 +20,7 @@ class LoginNotifier extends BaseStateNotifier<void> {
     String email,
     String password,
   ) {
+    showGlobalLoading();
     final userCredentials = UserCredentials(
       email: email,
       password: password,
@@ -30,6 +31,7 @@ class LoginNotifier extends BaseStateNotifier<void> {
         state = BaseState.error(failure);
         return false;
       },
+      globalLoading: true,
     );
   }
 

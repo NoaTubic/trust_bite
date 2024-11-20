@@ -5,13 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:food_safety/core/data/error_resolvers/firebase_error_resolver.dart';
 import 'package:food_safety/core/data/firestore/firestore_collections.dart';
+import 'package:food_safety/features/allergen_selection/domain/allergen.dart';
 import 'package:food_safety/features/auth/domain/entities/user.dart';
 import 'package:food_safety/generated/l10n.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:q_architecture/q_architecture.dart';
 
 final usersRepositoryProvider = Provider<UsersRepository>(
-  (ref) => UserRepositoryImpl(FirebaseAuth.instance),
+  (ref) => UsersRepositoryImpl(FirebaseAuth.instance),
 );
 
 abstract class UsersRepository {
@@ -28,13 +29,16 @@ abstract class UsersRepository {
   EitherFailureOr<void> changeProfilePicture(String imageUrl, String? userId);
 
   EitherFailureOr<void> removeProfilePicture(String? userId);
+
+  EitherFailureOr<void> updateAllergens(
+      String? userId, List<Allergen> allergens);
 }
 
-class UserRepositoryImpl with ErrorToFailureMixin implements UsersRepository {
+class UsersRepositoryImpl with ErrorToFailureMixin implements UsersRepository {
   final FirebaseAuth _firebaseAuth;
   final _usersCollection = FirestoreCollections.usersCollection;
 
-  UserRepositoryImpl(this._firebaseAuth);
+  UsersRepositoryImpl(this._firebaseAuth);
 
   @override
   EitherFailureOr<void> initializeUser() async => execute(
@@ -49,6 +53,7 @@ class UserRepositoryImpl with ErrorToFailureMixin implements UsersRepository {
                     username: currentUser.displayName!,
                     email: currentUser.email!,
                     photoUrl: currentUser.photoURL,
+                    allergens: [],
                   ),
                 );
           }
@@ -152,4 +157,28 @@ class UserRepositoryImpl with ErrorToFailureMixin implements UsersRepository {
     final imageUrl = await imageRef.getDownloadURL();
     return imageUrl;
   }
+
+  @override
+  EitherFailureOr<void> updateAllergens(
+          String? userId, List<Allergen> allergens) async =>
+      execute(
+        () async {
+          final userDocRef =
+              _usersCollection.doc(userId ?? _firebaseAuth.currentUser?.uid);
+
+          final userDoc = await userDocRef.get();
+          if (userDoc.exists) {
+            await userDocRef.update(
+              {
+                'allergens': allergens.map((e) => e.displayName).toList(),
+              },
+            );
+          } else {
+            return Left(Failure(title: S.current.user_not_found));
+          }
+
+          return const Right(null);
+        },
+        errorResolver: const FirebaseErrorResolver(),
+      );
 }

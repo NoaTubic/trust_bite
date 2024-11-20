@@ -6,17 +6,17 @@ import 'package:food_safety/core/constants/duration_constants.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
 
-final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
-
 class CustomToast extends StatelessWidget {
+  bool isWarning;
   final String message;
-  const CustomToast({
+
+  CustomToast({
     super.key,
     required this.message,
+    this.isWarning = true,
   });
 
-  void show(BuildContext context) =>
-      getFlushbar(context).show(rootNavigatorKey.currentState!.context);
+  void show(BuildContext context) => getFlushbar(context).show(context);
 
   Flushbar getFlushbar(BuildContext context) => Flushbar(
         message: message,
@@ -31,10 +31,15 @@ class CustomToast extends StatelessWidget {
             ),
           ),
         ),
-        icon: Icon(
-          Icons.warning_amber_rounded,
-          color: context.appColors.textDark,
-        ),
+        icon: isWarning
+            ? Icon(
+                Icons.warning_amber_rounded,
+                color: context.appColors.error,
+              )
+            : Icon(
+                Icons.check_circle,
+                color: context.appColors.primary,
+              ),
         borderRadius: const BorderRadius.all(
           Radius.circular(AppSizes.normalCircularRadius),
         ),

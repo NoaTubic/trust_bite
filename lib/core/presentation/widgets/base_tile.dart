@@ -48,7 +48,7 @@ class BaseTile extends StatelessWidget {
               const SizedBox(width: AppSizes.normalSpacing),
               Text(
                 label,
-                style: context.appTextStyles.text!.copyWith(
+                style: context.appTextStyles.normalText!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),

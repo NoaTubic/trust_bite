@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:food_safety/theme/fonts.dart';
 
 final class AppTextStyles extends ThemeExtension<AppTextStyles> {
-  final TextStyle? text;
+  final TextStyle? normalText;
+  final TextStyle? normalTextBold;
   final TextStyle? headings;
+  final TextStyle? headingsBold;
   final TextStyle? subHeadings;
+  final TextStyle? subHeadingsBold;
 
   const AppTextStyles({
-    required this.text,
+    required this.normalText,
+    required this.normalTextBold,
     required this.headings,
+    required this.headingsBold,
     required this.subHeadings,
+    required this.subHeadingsBold,
   });
 
   @override
@@ -18,9 +25,12 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
     TextStyle? boldLarge,
   }) {
     return AppTextStyles(
-      text: regular ?? text,
+      normalText: regular ?? normalText,
+      normalTextBold: bold ?? normalTextBold,
       headings: bold ?? headings,
+      headingsBold: boldLarge ?? headingsBold,
       subHeadings: boldLarge ?? subHeadings,
+      subHeadingsBold: boldLarge ?? subHeadingsBold,
     );
   }
 
@@ -30,9 +40,13 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
       return this;
     }
     return AppTextStyles(
-      text: TextStyle.lerp(text, other.text, t),
+      normalText: TextStyle.lerp(normalText, other.normalText, t),
+      normalTextBold: TextStyle.lerp(normalTextBold, other.normalTextBold, t),
       headings: TextStyle.lerp(headings, other.headings, t),
+      headingsBold: TextStyle.lerp(headingsBold, other.headingsBold, t),
       subHeadings: TextStyle.lerp(subHeadings, other.subHeadings, t),
+      subHeadingsBold:
+          TextStyle.lerp(subHeadingsBold, other.subHeadingsBold, t),
     );
   }
 }
@@ -40,14 +54,22 @@ final class AppTextStyles extends ThemeExtension<AppTextStyles> {
 AppTextStyles getAppTextStyles({required Color defaultColor}) {
   final baseTextStyle = TextStyle(
     color: defaultColor,
-    fontSize: 16,
+    fontSize: FontSizes.s12,
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
   );
   return AppTextStyles(
-    text: baseTextStyle,
-    headings: baseTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 32),
-    subHeadings:
-        baseTextStyle.copyWith(fontWeight: FontWeight.w600, fontSize: 24),
+    normalText: baseTextStyle,
+    normalTextBold: baseTextStyle.copyWith(fontWeight: FontWeight.bold),
+    headings: baseTextStyle.copyWith(fontSize: FontSizes.s20),
+    headingsBold: baseTextStyle.copyWith(
+      fontWeight: FontWeight.bold,
+      fontSize: FontSizes.s20,
+    ),
+    subHeadings: baseTextStyle.copyWith(fontSize: FontSizes.s16),
+    subHeadingsBold: baseTextStyle.copyWith(
+      fontWeight: FontWeight.bold,
+      fontSize: FontSizes.s16,
+    ),
   );
 }

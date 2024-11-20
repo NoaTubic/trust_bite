@@ -25,7 +25,7 @@ class CustomToast extends StatelessWidget {
           child: Center(
             child: Text(
               message,
-              style: context.appTextStyles.text!.copyWith(
+              style: context.appTextStyles.normalText!.copyWith(
                 color: context.appColors.textDark,
               ),
             ),

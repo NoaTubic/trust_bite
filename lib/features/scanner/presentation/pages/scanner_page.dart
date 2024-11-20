@@ -61,7 +61,7 @@ class ScannerPage extends HookConsumerWidget {
                 child: Text(
                   S.current.scanner_helper,
                   textAlign: TextAlign.center,
-                  style: context.appTextStyles.text!.copyWith(
+                  style: context.appTextStyles.normalText!.copyWith(
                     fontSize: FontSizes.s20,
                     fontWeight: FontWeight.bold,
                     color: context.appColors.background,

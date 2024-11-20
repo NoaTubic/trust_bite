@@ -9,4 +9,7 @@ extension BuildContextExtensions on BuildContext {
   AppColors get appColors => Theme.of(this).extension<AppColors>()!;
   double get screenWidth => MediaQuery.of(this).size.width;
   double get screenHeight => MediaQuery.of(this).size.height;
+  void pushNamed(String routeName) => Navigator.of(this).pushNamed(routeName);
+
+  void pop() => Navigator.of(this).pop();
 }

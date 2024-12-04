@@ -9,10 +9,12 @@ final openFoodFactsClientProvider = Provider<OpenFoodFactsClient>(
 class OpenFoodFactsClient implements ProductDetailsDataSource {
   @override
   Future<Product?> getProductDetails(String barcode) async {
+    OpenFoodAPIConfiguration.userAgent = UserAgent(
+      name: 'Trust Bites',
+    );
+
     final ProductQueryConfiguration configuration = ProductQueryConfiguration(
       barcode,
-      language: OpenFoodFactsLanguage.GERMAN,
-      fields: [ProductField.RAW],
       version: ProductQueryVersion.v3,
     );
     final ProductResultV3 result =

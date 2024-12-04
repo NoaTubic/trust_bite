@@ -61,6 +61,8 @@ class AuthRepositoryImpl with ErrorToFailureMixin implements AuthRepository {
           await _firebaseAuth.currentUser!
               .updateDisplayName(registrationRequest.username);
 
+          await _usersRepository.initializeUser();
+
           return const Right(null);
         },
         errorResolver: const FirebaseErrorResolver(),

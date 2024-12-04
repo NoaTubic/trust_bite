@@ -20,8 +20,6 @@ class SplashNotifier extends StateNotifier<String?> {
     await Future.delayed(const Duration(seconds: 2));
     final authState = ref.read(authNotifierProvider);
 
-    state = AllergenSelectionPage.routeName;
-
     if (authState is AuthStateAuthenticated) {
       final FoodSafetyUser? user =
           await ref.read(userProvider.notifier).getUserAsync();

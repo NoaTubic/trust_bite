@@ -170,7 +170,8 @@ class UsersRepositoryImpl with ErrorToFailureMixin implements UsersRepository {
           if (userDoc.exists) {
             await userDocRef.update(
               {
-                'allergens': allergens.map((e) => e.displayName).toList(),
+                'allergens':
+                    allergens.map((e) => e.displayName.toLowerCase()).toList(),
               },
             );
           } else {

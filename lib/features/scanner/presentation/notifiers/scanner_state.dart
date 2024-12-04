@@ -12,7 +12,7 @@ class ScannerState with _$ScannerState {
   const factory ScannerState({
     required bool isInitialized,
     required bool isLoading,
-    MobileScannerControllerWrapper? controllerWrapper,
+    MobileScannerController? controllerWrapper,
     required bool isFlashlightOn,
     Failure? failure,
     required bool isCameraPermissionGranted,

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ScannerState {
   bool get isInitialized => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  MobileScannerControllerWrapper? get controllerWrapper =>
+  MobileScannerController? get controllerWrapper =>
       throw _privateConstructorUsedError;
   bool get isFlashlightOn => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $ScannerStateCopyWith<$Res> {
   $Res call(
       {bool isInitialized,
       bool isLoading,
-      MobileScannerControllerWrapper? controllerWrapper,
+      MobileScannerController? controllerWrapper,
       bool isFlashlightOn,
       Failure? failure,
       bool isCameraPermissionGranted,
@@ -95,7 +95,7 @@ class _$ScannerStateCopyWithImpl<$Res, $Val extends ScannerState>
       controllerWrapper: freezed == controllerWrapper
           ? _value.controllerWrapper
           : controllerWrapper // ignore: cast_nullable_to_non_nullable
-              as MobileScannerControllerWrapper?,
+              as MobileScannerController?,
       isFlashlightOn: null == isFlashlightOn
           ? _value.isFlashlightOn
           : isFlashlightOn // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ abstract class _$$ScannerStateImplCopyWith<$Res>
   $Res call(
       {bool isInitialized,
       bool isLoading,
-      MobileScannerControllerWrapper? controllerWrapper,
+      MobileScannerController? controllerWrapper,
       bool isFlashlightOn,
       Failure? failure,
       bool isCameraPermissionGranted,
@@ -195,7 +195,7 @@ class __$$ScannerStateImplCopyWithImpl<$Res>
       controllerWrapper: freezed == controllerWrapper
           ? _value.controllerWrapper
           : controllerWrapper // ignore: cast_nullable_to_non_nullable
-              as MobileScannerControllerWrapper?,
+              as MobileScannerController?,
       isFlashlightOn: null == isFlashlightOn
           ? _value.isFlashlightOn
           : isFlashlightOn // ignore: cast_nullable_to_non_nullable
@@ -258,7 +258,7 @@ class _$ScannerStateImpl implements _ScannerState {
   @override
   final bool isLoading;
   @override
-  final MobileScannerControllerWrapper? controllerWrapper;
+  final MobileScannerController? controllerWrapper;
   @override
   final bool isFlashlightOn;
   @override
@@ -349,7 +349,7 @@ abstract class _ScannerState implements ScannerState {
   const factory _ScannerState(
       {required final bool isInitialized,
       required final bool isLoading,
-      final MobileScannerControllerWrapper? controllerWrapper,
+      final MobileScannerController? controllerWrapper,
       required final bool isFlashlightOn,
       final Failure? failure,
       required final bool isCameraPermissionGranted,
@@ -365,7 +365,7 @@ abstract class _ScannerState implements ScannerState {
   @override
   bool get isLoading;
   @override
-  MobileScannerControllerWrapper? get controllerWrapper;
+  MobileScannerController? get controllerWrapper;
   @override
   bool get isFlashlightOn;
   @override

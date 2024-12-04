@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
 import 'package:food_safety/theme/app_colors.dart';
 
 class BaseTile extends StatelessWidget {
   final String label;
-  final IconData icon;
+  final String icon;
   final void Function()? onTap;
   final Widget? action;
 
@@ -41,9 +42,8 @@ class BaseTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
+              SvgPicture.asset(
                 icon,
-                color: context.appColors.primary,
               ),
               const SizedBox(width: AppSizes.normalSpacing),
               Text(
@@ -53,7 +53,7 @@ class BaseTile extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              action ?? const Icon(Icons.keyboard_arrow_right_rounded),
+              // action ?? const Icon(Icons.keyboard_arrow_right_rounded),
               const SizedBox(width: AppSizes.smallSpacing),
             ],
           ),

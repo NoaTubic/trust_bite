@@ -6,6 +6,12 @@ abstract class ImageAssets {
   static const String facebook = '$imagePath/Facebook icon.svg';
   static const String google = '$imagePath/Google icon.svg';
 
+  static const String scanner = '$imagePath/center_focus_strong.svg';
+  static const String home = '$imagePath/home.svg';
+  static const String profile = '$imagePath/person.svg';
+  static const String calendar = '$imagePath/calendar_today.svg';
+  static const String search = '$imagePath/search.svg';
+
   static const String abalone = '$imagePath/Abalone.svg';
   static const String celery = '$imagePath/Celery.svg';
   static const String lupin = '$imagePath/Lupin.svg';

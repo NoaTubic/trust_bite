@@ -1,7 +1,6 @@
+import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_safety/core/constants/duration_constants.dart';
 import 'package:food_safety/core/domain/failures/permission_failure.dart';
@@ -43,11 +42,14 @@ class ScannerPage extends HookConsumerWidget {
                   ? Transform(
                       transform: Matrix4.diagonal3Values(1.35, 1, 1),
                       child: MobileScanner(
-                        controller: scannerState.controllerWrapper!.controller,
+                        controller: scannerState.controllerWrapper!,
                       ),
                     )
                   : MobileScanner(
-                      controller: scannerState.controllerWrapper!.controller,
+                      controller: scannerState.controllerWrapper!,
+                      onDetect: (code) {
+                        log('Barcode detected: ${code.barcodes.first.displayValue}');
+                      },
                     )
               : Container(
                   color: Colors.black.withOpacity(0.4),

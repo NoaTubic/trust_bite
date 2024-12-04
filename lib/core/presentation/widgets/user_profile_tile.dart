@@ -25,7 +25,8 @@ class UserProfileTile extends ConsumerWidget {
             backgroundColor: context.appColors.background,
             radius: AppSizes.userAvatarSize,
             child: Image.network(
-              user?.photoUrl ?? '',
+              user?.photoUrl ??
+                  'https://robohash.org/mail@ashallendesign.co.uk',
               errorBuilder: (context, error, stackTrace) => Icon(
                 Icons.person,
                 color: context.appColors.tertiary,

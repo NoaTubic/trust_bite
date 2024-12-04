@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:food_safety/core/constants/duration_constants.dart';
 import 'package:food_safety/features/product_details/domain/usecases/get_product_details.dart';
+import 'package:food_safety/features/product_details/presentation/notifiers/product_details_notifier.dart';
 import 'package:food_safety/features/scanner/data/mobile_scanner_controller_wrapper.dart';
 import 'package:food_safety/features/scanner/domain/usecases/initialize_scanner.dart';
 import 'package:food_safety/features/scanner/presentation/notifiers/scanner_state.dart';
@@ -48,9 +49,8 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
       _setInitializationFailedState();
       return;
     } else {
-      // await state.controllerWrapper!.controller.stop();
-      _subscription =
-          state.controllerWrapper!.controller.barcodes.listen((code) async {
+      // await state.controllerWrapper!.stop();
+      _subscription = state.controllerWrapper!.barcodes.listen((code) async {
         await onCodeDetected(code);
       });
       clearLoading();
@@ -67,7 +67,13 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
           isInitialized: true,
           isCameraPermissionGranted: true,
           isCameraPermissionRequested: true,
-          controllerWrapper: MobileScannerControllerWrapper(
+          controllerWrapper: MobileScannerController(
+            autoStart: true,
+            facing: CameraFacing.back,
+            detectionSpeed: DetectionSpeed.normal,
+            detectionTimeoutMs: 350,
+            formats: [BarcodeFormat.all],
+            returnImage: false,
             cameraResolution: const Size(1080, 1920),
           ),
         );
@@ -95,14 +101,14 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
         await Future.delayed(
           const Duration(seconds: 1),
         );
-        state = state.copyWith(
-          shouldNavigateToProductDetails: true,
-        );
-        clearLoading();
-        state = state.copyWith(
-          shouldNavigateToProductDetails: false,
-        );
-        // await _processScannedCode(barcode);
+        // state = state.copyWith(
+        //   shouldNavigateToProductDetails: true,
+        // );
+        // clearLoading();
+        // state = state.copyWith(
+        //   shouldNavigateToProductDetails: false,
+        // );
+        await processScannedCode(barcode);
       },
       duration: DurationConstants.scannerThrottleDuration,
     );
@@ -117,9 +123,12 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
     setLoading();
   }
 
-  Future<void> _processScannedCode(BarcodeCapture code) async {
-    final scanResult =
-        await _getProductDetails(code.barcodes.first.displayValue!);
+  Future<void> processScannedCode(BarcodeCapture code) async {
+    final scanResult = await _getProductDetails('5449000000996');
+
+    // ref
+    //     .read(productDetailsNotifier.notifier)
+    //     .getProductDetails('5449000000996');
 
     scanResult.fold(
       (failure) => state = state.copyWith(failure: failure),
@@ -136,13 +145,13 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
   Future<void> pauseScanner() async {
     _subscription?.cancel();
     _subscription = null;
-    await state.controllerWrapper!.controller.stop();
+    await state.controllerWrapper!.stop();
   }
 
   Future<void> resumeScanner() async {
-    await state.controllerWrapper?.controller.start().whenComplete(
+    await state.controllerWrapper?.start().whenComplete(
       () async {
-        _subscription = state.controllerWrapper?.controller.barcodes.listen(
+        _subscription = state.controllerWrapper?.barcodes.listen(
           (code) async {
             await onCodeDetected(code);
           },
@@ -159,7 +168,7 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
 
   Future<void> toggleFlashlight() async {
     final isFlashlightOn = state.isFlashlightOn;
-    await state.controllerWrapper!.controller.toggleTorch();
+    await state.controllerWrapper!.toggleTorch();
     state = state.copyWith(isFlashlightOn: !isFlashlightOn);
   }
 
@@ -178,6 +187,6 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
   }
 
   void disposeScannerController() {
-    state.controllerWrapper?.controller.dispose();
+    state.controllerWrapper?.dispose();
   }
 }

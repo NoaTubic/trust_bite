@@ -88,9 +88,9 @@ class ScannerPage extends HookConsumerWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 horizontal: AppSizes.bodyHorizontalPadding,
-                vertical: AppSizes.mediumSpacing,
+                vertical: context.screenHeight * 0.1,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

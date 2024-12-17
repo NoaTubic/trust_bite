@@ -31,12 +31,6 @@ class HomePage extends ConsumerWidget {
             label: 'Scan products',
             onTap: () => context.pushNamed(ScannerPage.routeName),
           ),
-          Spacer(),
-          CustomButton.primary(
-            text: 'Log Out',
-            onPressed: () => ref.read(authNotifierProvider.notifier).logout(),
-            context: context,
-          ),
         ],
       ),
     );

@@ -7,6 +7,7 @@ import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/profile_avatar.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/auth_notifier.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/user_notifier.dart';
+import 'package:food_safety/features/auth/presentation/pages/login_page.dart';
 import 'package:food_safety/features/profile/presentation/widgets/profile_tile.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -83,7 +84,10 @@ class ProfilePage extends ConsumerWidget {
                 horizontal: AppSizes.bodyHorizontalPadding),
             child: CustomButton.primary(
               text: 'Log Out',
-              onPressed: () => ref.read(authNotifierProvider.notifier).logout(),
+              onPressed: () {
+                ref.read(authNotifierProvider.notifier).logout();
+                context.pushNamed(LoginPage.routeName);
+              },
               context: context,
             ),
           ),

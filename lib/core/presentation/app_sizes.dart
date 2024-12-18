@@ -35,8 +35,12 @@ abstract class AppSizes {
 
   static const double userAvatarSize = 28;
 
-  static const double smallCircularRadius = 8;
+  static const double smallCircularRadius = 12;
   static const double normalCircularRadius = 20;
+  static const BorderRadiusGeometry smallCircularBorderRadius =
+      BorderRadius.all(
+    Radius.circular(smallCircularRadius),
+  );
   static const BorderRadiusGeometry normalCircularBorderRadius =
       BorderRadius.all(
     Radius.circular(normalCircularRadius),

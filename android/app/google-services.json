@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "693856726457",
     "project_id": "food-safety-f8d16",
-    "storage_bucket": "food-safety-f8d16.appspot.com"
+    "storage_bucket": "food-safety-f8d16.firebasestorage.app"
   },
   "client": [
     {

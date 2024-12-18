@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
-
+import 'package:food_safety/core/presentation/widgets/profile_avatar.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/user_notifier.dart';
 import 'package:food_safety/generated/l10n.dart';
 import 'package:gap/gap.dart';
@@ -18,23 +18,7 @@ class UserProfileTile extends ConsumerWidget {
 
     return Row(
       children: [
-        CircleAvatar(
-          radius: AppSizes.userAvatarSize + 3,
-          backgroundColor: context.appColors.tertiary,
-          child: CircleAvatar(
-            backgroundColor: context.appColors.background,
-            radius: AppSizes.userAvatarSize,
-            child: Image.network(
-              user?.photoUrl ??
-                  'https://robohash.org/mail@ashallendesign.co.uk',
-              errorBuilder: (context, error, stackTrace) => Icon(
-                Icons.person,
-                color: context.appColors.tertiary,
-                size: AppSizes.userAvatarSize,
-              ),
-            ),
-          ),
-        ),
+        ProfileAvatar(),
         Gap(AppSizes.normalSpacing),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,

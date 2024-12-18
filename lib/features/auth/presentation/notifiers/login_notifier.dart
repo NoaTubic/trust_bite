@@ -35,11 +35,14 @@ class LoginNotifier extends BaseStateNotifier<void> {
     );
   }
 
-  Future<void> loginWithGoogle() =>
-      execute(_authRepository.loginWithGoogle(), onFailureOccurred: (failure) {
-        state = BaseState.error(failure);
-        return false;
-      }, globalLoading: true);
+  Future<void> loginWithGoogle() => execute(
+        _authRepository.loginWithGoogle(),
+        onFailureOccurred: (failure) {
+          state = BaseState.error(failure);
+          return false;
+        },
+        globalLoading: true,
+      );
 
   Future<void> loginAnonymously() => execute(
         _authRepository.loginAnonymously(),

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/widgets/bottom_nav_bar.dart';
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/custom_toast.dart';
 import 'package:food_safety/core/presentation/widgets/logo.dart';
@@ -18,12 +19,17 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:q_architecture/base_notifier.dart';
 
-class LoginPage extends ConsumerWidget {
+class LoginPage extends ConsumerStatefulWidget {
   static const String routeName = '/login';
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends ConsumerState<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
     ref.listen<BaseState<void>>(
       loginNotifierProvider,
       (_, next) async {
@@ -33,11 +39,11 @@ class LoginPage extends ConsumerWidget {
               if (ref.read(authNotifierProvider) ==
                   const AuthState.authenticated())
                 {
-                  await ref.read(userProvider.notifier).getUser(),
+                  await ref.read(userProvider.notifier).getUserAsync(),
                   Navigator.of(context).pushNamed(
                       ref.watch(userProvider)!.allergens.isEmpty
                           ? AllergenSelectionPage.routeName
-                          : HomePage.routeName),
+                          : BottomNavBar.routeName),
                 },
             },
           BaseError(failure: final failure) => CustomToast(

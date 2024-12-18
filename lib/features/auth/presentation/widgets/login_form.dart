@@ -83,7 +83,10 @@ class LoginForm extends ConsumerWidget {
         ),
         const Gap(AppSizes.largeSpacing),
         OrSection(),
-        SocialLoginSection(),
+        SocialLoginSection(
+          onGoogleSignIn: () =>
+              ref.read(loginNotifierProvider.notifier).loginWithGoogle(),
+        ),
         AuthHelperButton(
           helperText: S.current.dont_have_account,
           buttonLabel: S.current.sign_up,

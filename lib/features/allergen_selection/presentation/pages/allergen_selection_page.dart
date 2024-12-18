@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
+import 'package:food_safety/core/presentation/widgets/bottom_nav_bar.dart';
 import 'package:food_safety/core/presentation/widgets/custom_button.dart';
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/custom_toast.dart';
@@ -75,7 +76,7 @@ class AllergenSelectionPage extends ConsumerWidget {
     ref
         .read(allergenSelectionNotifierProvider.notifier)
         .setAllergens(noAllergens: true);
-    context.pushNamed(HomePage.routeName);
+    context.pushNamed(BottomNavBar.routeName);
     CustomToast(
       message: S.current.allergens_successfully_updated,
       isWarning: false,

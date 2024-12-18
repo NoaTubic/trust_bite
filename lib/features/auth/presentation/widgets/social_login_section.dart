@@ -26,7 +26,10 @@ class SocialLoginSection extends StatelessWidget {
         children: [
           SocialButton(icon: ImageAssets.facebook),
           SizedBox(width: AppSizes.xlSpacing),
-          SocialButton(icon: ImageAssets.google),
+          SocialButton(
+            icon: ImageAssets.google,
+            onPressed: onGoogleSignIn,
+          ),
           SizedBox(width: AppSizes.xlSpacing),
           SocialButton(icon: ImageAssets.apple),
         ],

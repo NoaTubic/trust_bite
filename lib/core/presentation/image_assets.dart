@@ -12,6 +12,11 @@ abstract class ImageAssets {
   static const String calendar = '$imagePath/calendar_today.svg';
   static const String search = '$imagePath/search.svg';
 
+  static const String idCard = '$imagePath/id_card.svg';
+  static const String restaurantMenu = '$imagePath/restaurant_menu.svg';
+  static const String settings = '$imagePath/settings.svg';
+  static const String edit = '$imagePath/edit.svg';
+
   static const String abalone = '$imagePath/Abalone.svg';
   static const String celery = '$imagePath/Celery.svg';
   static const String lupin = '$imagePath/Lupin.svg';

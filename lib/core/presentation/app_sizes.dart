@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class AppSizes {
+  static const double zero = 0;
   static const double size4 = 4;
   static const double size8 = 8;
   static const double size16 = 16;
@@ -34,6 +35,7 @@ abstract class AppSizes {
 
   static const double userAvatarSize = 28;
 
+  static const double smallCircularRadius = 8;
   static const double normalCircularRadius = 20;
   static const BorderRadiusGeometry normalCircularBorderRadius =
       BorderRadius.all(

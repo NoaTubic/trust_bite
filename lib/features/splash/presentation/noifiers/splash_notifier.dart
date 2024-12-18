@@ -1,3 +1,4 @@
+import 'package:food_safety/core/presentation/widgets/bottom_nav_bar.dart';
 import 'package:food_safety/features/allergen_selection/presentation/pages/allergen_selection_page.dart';
 import 'package:food_safety/features/auth/domain/entities/user.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/auth_notifier.dart';
@@ -26,7 +27,7 @@ class SplashNotifier extends StateNotifier<String?> {
 
       user != null && user.allergens.isEmpty
           ? state = AllergenSelectionPage.routeName
-          : state = HomePage.routeName;
+          : state = BottomNavBar.routeName;
     } else {
       state = LoginPage.routeName;
     }

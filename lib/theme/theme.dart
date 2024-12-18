@@ -45,7 +45,7 @@ ThemeData _getTheme({required AppColors appColors}) {
     ),
     extensions: [
       appColors,
-      getAppTextStyles(defaultColor: appColors.textDark!),
+      getAppTextStyles(defaultColor: appColors.tertiary!),
     ],
   );
 }

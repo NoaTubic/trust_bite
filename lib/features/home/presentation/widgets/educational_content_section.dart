@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_safety/core/presentation/app_sizes.dart';
 import 'package:food_safety/core/presentation/build_context_extensions.dart';
 import 'package:food_safety/core/presentation/widgets/custom_app_bar.dart';
-import 'package:food_safety/theme/fonts.dart';
+
 import 'package:gap/gap.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

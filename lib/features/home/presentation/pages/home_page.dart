@@ -4,6 +4,7 @@ import 'package:food_safety/core/presentation/build_context_extensions.dart';
 
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/user_profile_tile.dart';
+import 'package:food_safety/features/home/presentation/widgets/educational_content_section.dart';
 import 'package:food_safety/features/home/presentation/widgets/expiration_date_home_calendar.dart';
 import 'package:food_safety/features/home/presentation/widgets/products_list_view.dart';
 import 'package:gap/gap.dart';
@@ -17,10 +18,13 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomScaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UserProfileTile(),
           Gap(AppSizes.mediumSpacing),
           ExpirationDateHomeCalendar(),
+          Gap(AppSizes.mediumSpacing),
+          EducationalContentSection(),
           Gap(AppSizes.mediumSpacing),
           SearchBar(),
           Gap(AppSizes.mediumSpacing),

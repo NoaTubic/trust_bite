@@ -138,6 +138,9 @@ class ScannerNotifier extends SimpleStateNotifier<ScannerState> {
           shouldNavigateToProductDetails: true,
         );
         clearLoading();
+        state = state.copyWith(
+          shouldNavigateToProductDetails: false,
+        );
       },
     );
   }

@@ -21,7 +21,7 @@ class BottomNavBar extends ConsumerWidget {
     ref.firebaseMessagingNotificationListener(context);
     return PersistentTabView(
       navBarHeight: 72,
-      navBarBuilder: (navBarConfig) => Style13BottomNavBar(
+      navBarBuilder: (navBarConfig) => Style1BottomNavBar(
         navBarConfig: navBarConfig,
         navBarDecoration: NavBarDecoration(
             color: context.appColors.tertiary!,

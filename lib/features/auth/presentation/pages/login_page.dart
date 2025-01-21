@@ -6,7 +6,6 @@ import 'package:food_safety/core/presentation/widgets/bottom_nav_bar.dart';
 import 'package:food_safety/core/presentation/widgets/custom_scaffold.dart';
 import 'package:food_safety/core/presentation/widgets/custom_toast.dart';
 import 'package:food_safety/core/presentation/widgets/logo.dart';
-import 'package:food_safety/features/home/presentation/pages/home_page.dart';
 import 'package:food_safety/features/allergen_selection/presentation/pages/allergen_selection_page.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/auth_notifier.dart';
 import 'package:food_safety/features/auth/presentation/notifiers/auth_state.dart';

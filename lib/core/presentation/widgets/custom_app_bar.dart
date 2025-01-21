@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_safety/core/presentation/app_sizes.dart';
+import 'package:food_safety/core/presentation/build_context_extensions.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -8,7 +10,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      forceMaterialTransparency: true,
+      centerTitle: false,
+      title: Padding(
+        padding: const EdgeInsets.only(left: AppSizes.normalSpacing),
+        child: Text(
+          title,
+          style: context.appTextStyles.headingsBold,
+        ),
+      ),
     );
   }
 

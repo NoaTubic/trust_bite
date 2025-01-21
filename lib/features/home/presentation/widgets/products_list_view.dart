@@ -99,8 +99,12 @@ class ProductListView extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          DateFormat('d')
-                              .format(DateTime.now()), // Day of the month
+                          DateFormat('d').format(
+                            DateTime.now().add(
+                              Duration(
+                                  days: int.parse(product['daysLeft'] ?? '0')),
+                            ),
+                          ),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,

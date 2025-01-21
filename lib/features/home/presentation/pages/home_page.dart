@@ -17,19 +17,23 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomScaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          UserProfileTile(),
-          Gap(AppSizes.mediumSpacing),
-          ExpirationDateHomeCalendar(),
-          Gap(AppSizes.mediumSpacing),
-          EducationalContentSection(),
-          Gap(AppSizes.mediumSpacing),
-          SearchBar(),
-          Gap(AppSizes.mediumSpacing),
-          Expanded(child: ProductListView()),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            UserProfileTile(),
+            Gap(AppSizes.mediumSpacing),
+            ExpirationDateHomeCalendar(),
+            Gap(AppSizes.mediumSpacing),
+            SearchBar(),
+            Gap(AppSizes.mediumSpacing),
+            SizedBox(
+              height: context.screenHeight * 0.32,
+              child: ProductListView(),
+            ),
+            EducationalContentSection(),
+          ],
+        ),
       ),
     );
   }

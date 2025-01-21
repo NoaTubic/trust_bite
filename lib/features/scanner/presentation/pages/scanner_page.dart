@@ -162,7 +162,8 @@ class ScannerPage extends HookConsumerWidget {
       (previous, next) {
         if (previous == next) return;
         if (next.shouldNavigateToProductDetails) {
-          Navigator.of(context).pushNamed(ProductDetailsPage.routeName);
+          Navigator.of(context)
+              .pushReplacementNamed(ProductDetailsPage.routeName);
         }
       },
     );
